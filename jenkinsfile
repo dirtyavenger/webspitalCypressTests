@@ -1,15 +1,5 @@
 pipeline {
-    agent {
-
-        docker { 
-
-            image 'node:14'
-
-            args '-u root'
-
-        }
-
-    }
+    agent any
     parameters{
         string(name: 'SPEC', defaultValue: "cypress/e2e/3-my own/myOwnTest.cy.js", description: "Enter the script path you want to execute")
         choice(name: 'BROWSER',choices: ["chrome","edge","firefox"], description: "Choose browser")
@@ -21,7 +11,15 @@ pipeline {
                 echo "Building the app"
                 }
         }
+        stage('Run E2E tests') {
+            dir("webspitalTests2") {
+                lock("webspitalTests2-${env.NODE_NAME}") {
+             sh 'docker run -v $PWD:/e2e -w /e2e cypress/included:3.4.0'
+    }
+  }
+}
         stage('Testing'){
+    
            steps {
             sh "npm install"
             sh "npx cypress run --headless"
