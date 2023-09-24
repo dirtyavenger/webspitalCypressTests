@@ -4,12 +4,12 @@ pipeline {
         string(name: 'SPEC', defailtValue: "cypress/e2e/3-my own/myOwnTest.cy.js", description: "Enter the script path you want to execute")
         choice(name: 'BROWSER',choices: ["chrome","edge","firefox"], description: "Choose browser")
     }
-    options{
-        ansiColor('xterm')
-    }
+
     stages{
         stage('Build'){
-            echo "Building the app"
+            steps{
+                echo "Building the app"
+                }
         }
         stage('Testing'){
            steps {
@@ -18,7 +18,9 @@ pipeline {
            }
         }
         stage('Deploying'){
-            echo "Deploying the app"
+            steps{
+                echo "Deploying the app"
+                }
         }
     }
 }
