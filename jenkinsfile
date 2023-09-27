@@ -22,7 +22,7 @@ pipeline {
     
            steps {
             sh "npm install"
-            sh "npx cypress run --spec cypress/e2e/3-my own/myOwnTest.cy.js"
+            sh "npx cypress run --spec 'cypress/e2e/3-my own/myOwnTest.cy.js'"
            }
         }
         stage('Deploying'){
