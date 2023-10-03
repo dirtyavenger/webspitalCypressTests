@@ -9,6 +9,7 @@ pipeline {
         stage('Build'){
             steps{
                 sh 'echo "$(pwd)"'
+                sh 'npm install'
                 }
         }
         stage('Run E2E tests') {
