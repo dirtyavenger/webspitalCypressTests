@@ -47,6 +47,7 @@ module.exports = defineConfig({
       // console.log(config);
       require("cypress-email-results")(on, config, {
         email: "lenka.dunajova@gmail.com",
+        from: "info@webspital.sk",
         // pass your transport object
         transport,
       });
