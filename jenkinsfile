@@ -15,21 +15,8 @@ pipeline {
             steps{
 
              sh 'docker run -v $PWD:/e2e -w /e2e cypress/included:12.17.1'
+            }
+        }
 
-  }
-}
-        stage('Testing'){
-    
-           steps {
-            sh pwd
-            sh "npm install"
-            sh "npx cypress run --spec 'cypress/e2e/3-my own/myOwnTest.cy.js'"
-           }
-        }
-        stage('Deploying'){
-            steps{
-                echo "Deploying the app"
-                }
-        }
     }
 }
