@@ -1,5 +1,6 @@
 const { defineConfig } = require("cypress");
 const nodemailer = require("nodemailer");
+const myCypressEmailer = require("./lib/modules/index.js");
 
 const transport = nodemailer.createTransport({
   pool: true,
@@ -45,7 +46,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       // console.log(config);
-      require("cypress-email-results")(on, config, {
+      myCypressEmailer(on, config, {
         email: "lenka.dunajova@gmail.com",
         from: "info@webspital.sk",
         // pass your transport object
