@@ -8,7 +8,7 @@ pipeline {
     stages{
         stage('Build'){
             steps{
-                echo "Building the app"
+                echo "$(pwd)"
                 }
         }
         stage('Run E2E tests') {
